@@ -1,0 +1,60 @@
+(alerter) Robs-MacBook-Air:django rob$ python manage.py shell -c "from demoapp.tasks import add;a = add.delay(2,2)"
+Attempted to print add.s()
+^CTraceback (most recent call last):
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/kombu/utils/objects.py", line 42, in __get__
+    return obj.__dict__[self.__name__]
+KeyError: 'tasks'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/kombu/utils/objects.py", line 42, in __get__
+    return obj.__dict__[self.__name__]
+KeyError: 'tasks'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "manage.py", line 12, in <module>
+    execute_from_command_line(sys.argv)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/django/core/management/__init__.py", line 371, in execute_from_command_line
+    utility.execute()
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/django/core/management/__init__.py", line 365, in execute
+    self.fetch_command(subcommand).run_from_argv(self.argv)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/django/core/management/base.py", line 288, in run_from_argv
+    self.execute(*args, **cmd_options)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/django/core/management/base.py", line 335, in execute
+    output = self.handle(*args, **options)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/django/core/management/commands/shell.py", line 86, in handle
+    exec(options['command'])
+  File "<string>", line 1, in <module>
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/local.py", line 146, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/local.py", line 109, in _get_current_object
+    return loc(*self.__args, **self.__kwargs)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/__init__.py", line 72, in task_by_cons
+    return app.tasks[
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/kombu/utils/objects.py", line 44, in __get__
+    value = obj.__dict__[self.__name__] = self.__get(obj)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/base.py", line 1228, in tasks
+    self.finalize(auto=True)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/base.py", line 521, in finalize
+    self.on_after_finalize.send(sender=self)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/utils/dispatch/signal.py", line 227, in send
+    response = receiver(signal=self, sender=sender, **named)
+  File "/private/tmp/celery/examples/django/proj/celery.py", line 23, in setup_periodic_tasks
+    print(add.s(2,2))
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/local.py", line 146, in __getattr__
+    return getattr(self._get_current_object(), name)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/local.py", line 109, in _get_current_object
+    return loc(*self.__args, **self.__kwargs)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/__init__.py", line 72, in task_by_cons
+    return app.tasks[
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/kombu/utils/objects.py", line 44, in __get__
+    value = obj.__dict__[self.__name__] = self.__get(obj)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/base.py", line 1228, in tasks
+    self.finalize(auto=True)
+  File "/Users/rob/Virtualenvs/alerter/lib/python3.6/site-packages/celery/app/base.py", line 507, in finalize
+    with self._finalize_mutex:
+KeyboardInterrupt
+
